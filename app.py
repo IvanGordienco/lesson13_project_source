@@ -9,11 +9,13 @@ app = Flask(__name__)
 
 @app.route("/")
 def page_index():
+    # вывод формы на главной странице
     return render_template('index.html', tags=get_tags(read_json(POST_PATH)))
 
 
 @app.route("/tag")
 def page_tag():
+    # вывод постов по тегу
     tag = request.args.get('tag')
     if not tag:
         abort(400)
